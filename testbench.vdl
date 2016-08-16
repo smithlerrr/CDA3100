@@ -1,0 +1,303 @@
+-- Testbench for OR gate
+library IEEE;
+use IEEE.std_logic_1164.all;
+ 
+entity testbench is
+-- empty
+end testbench; 
+
+architecture tb of testbench is
+
+-- DUT component
+component muxOuts is
+port(
+  s: in std_logic;
+  a: in std_logic;
+  b: in std_logic;
+  c: in std_logic;
+  d: in std_logic;  
+  f: out std_logic);
+end component;
+
+signal s_in, a_in, b_in, c_in, d_in, f_out: std_logic;
+
+begin
+
+  -- Connect DUT
+  DUT: muxOuts port map(s_in, a_in, b_in, c_in, d_in, f_out);
+
+  process
+  begin
+    s_in <= '0';
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '0';    
+    
+    wait for 1 ns;
+    assert(f_out='0') report "Fail 0/0" severity error;
+    
+    s_in <= '0';  
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 1/X" severity error;
+   
+    s_in <= '0';
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 1/1" severity error;
+   
+    s_in <= '0';  
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';    
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';    
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';  
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';   
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';   
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';  
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';    
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';   
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';  
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';   
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '0';    
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+ 
+
+    s_in <= '1';
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '0';    
+    wait for 1 ns;
+    assert(f_out='0') report "Fail 0/0" severity error;
+    
+    s_in <= '1';  
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 1/X" severity error;
+   
+    s_in <= '1';
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 1/1" severity error;
+   
+    s_in <= '1';  
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';    
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';    
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';  
+    a_in <= '0';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';   
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';   
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';  
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';    
+    a_in <= '1';
+    b_in <= '0';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';   
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';  
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '0';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';   
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '0';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+   
+    s_in <= '1';    
+    a_in <= '1';
+    b_in <= '1';
+    c_in <= '1';
+    d_in <= '1';
+    wait for 1 ns;
+    assert(f_out='1') report "Fail 0/1" severity error;
+     
+    
+
+    -- Clear inputs
+    s_in <= '0';
+    a_in <= '0';
+    b_in <= '0';
+    c_in <= '0';
+    d_in <= '0';
+
+    assert false report "Test done." severity note;
+    wait;
+  end process;
+end tb;
+
+
